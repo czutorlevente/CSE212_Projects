@@ -34,12 +34,22 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create a list for the multiples
+        List<double> multiples_1 = new List<double>();
 
-        return new double[0]; // replace this return statement with your own
+        // Create a loop that will repeat itself as many times as the length,
+        // and first it will add the number to our list, and then it will change the number to number + number,
+        // so that the loop next time will add the next multiple of that original number.
+        // It is also an option to multiply number with i each time, and add that to our list.
+
+        for (int i = 1; i <= length; i++)
+        {
+            multiples_1.Add(i*number);
+        }
+        //Change the list to an array so that we can return it as an array.
+        double[] array_2 = multiples_1.ToArray();
+
+        return array_2;
     }
     
     /// <summary>
@@ -52,10 +62,16 @@ public static class ArraysTester {
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Get range from the end of the list which should have the length of the amount parameter.
+        int le_1 = data.Count;
+        List<int> list_1 = data.GetRange(le_1 - amount, amount);
+        
+        // Remove that same range from the end of the data list, and then instert it to the beginning.
+
+        data.RemoveRange(le_1 - amount, amount);
+        data.InsertRange(0, list_1);
+
+        
 
     }
 }
