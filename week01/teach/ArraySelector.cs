@@ -28,6 +28,8 @@ public static class ArraySelector
                 index_2 = index_2 + 1;
             }
         }
-        return new int[0];
+
+        int[] a3 = l3.ToArray();
+        return a3;
     }
 }
