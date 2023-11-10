@@ -20,7 +20,7 @@ public class SimpleQueue {
         queue.Enqueue(100);
         var value = queue.Dequeue();
         Console.WriteLine(value);
-        // Defect(s) Found:
+        // Defect(s) Found: Dequeue function used index 1 instead of 0.
 
         Console.WriteLine("------------");
 
@@ -38,7 +38,8 @@ public class SimpleQueue {
         Console.WriteLine(value);
         value = queue.Dequeue();
         Console.WriteLine(value);
-        // Defect(s) Found: 
+        // Defect(s) Found: the order if the numbers was different due to an error in the Enqueue function. Instead of insterting the value to
+        // index 0, I changed it to just Add the varuable to the queue. 
 
         Console.WriteLine("------------");
 
@@ -53,8 +54,8 @@ public class SimpleQueue {
         }
         catch (IndexOutOfRangeException) {
             Console.WriteLine("I got the exception as expected.");
-        }
-        // Defect(s) Found: 
+            }
+        // Defect(s) Found: No issues.
     }
 
     private readonly List<int> _queue = new();
@@ -64,7 +65,7 @@ public class SimpleQueue {
     /// </summary>
     /// <param name="value">Integer value to add to the queue</param>
     private void Enqueue(int value) {
-        _queue.Insert(0, value);
+        _queue.Add(value);
     }
 
     /// <summary>
@@ -76,8 +77,8 @@ public class SimpleQueue {
         if (_queue.Count <= 0)
             throw new IndexOutOfRangeException();
 
-        var value = _queue[1];
-        _queue.RemoveAt(1);
+        var value = _queue[0];
+        _queue.RemoveAt(0);
         return value;
     }
 }
