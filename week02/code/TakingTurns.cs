@@ -22,10 +22,10 @@ public static class TakingTurns {
         players.AddPerson("Bob", 2);
         players.AddPerson("Tim", 5);
         players.AddPerson("Sue", 3);
-        // Console.WriteLine(players);    // This can be un-commented out for debug help
+        //Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: The Enqueue function was inserting things to index 0 instead of Adding. I changed that to .Add.
 
         Console.WriteLine("---------");
 
@@ -40,7 +40,7 @@ public static class TakingTurns {
         players.AddPerson("Sue", 3);
         for (int i = 0; i < 5; i++) {
             players.GetNextPerson();
-            // Console.WriteLine(players);
+            //Console.WriteLine(players);
         }
 
         players.AddPerson("George", 3);
@@ -48,7 +48,7 @@ public static class TakingTurns {
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: I get the expected results immediately.
 
         Console.WriteLine("---------");
 
@@ -66,7 +66,7 @@ public static class TakingTurns {
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: The GetNextPerson function needed an "else if" statement for the case when Turns are 0 or less.
 
         Console.WriteLine("---------");
 
@@ -76,6 +76,6 @@ public static class TakingTurns {
         Console.WriteLine("Test 4");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: It works correctly.
     }
 }
