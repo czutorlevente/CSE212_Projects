@@ -1,6 +1,6 @@
 ﻿Console.WriteLine("\n=========== PROBLEM 1 TESTS ===========");
-TakingTurns.Test();
+//TakingTurns.Test();
 
 //Console.WriteLine("\n=========== PROBLEM 2 TESTS ===========");
-//Priority.Test();
+Priority.Test();
 
