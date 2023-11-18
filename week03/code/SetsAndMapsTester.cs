@@ -108,9 +108,24 @@ public static class SetsAndMapsTester {
     /// </summary>
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     private static void DisplayPairs(string[] words) {
-        // To display the pair correctly use something like:
-        // Console.WriteLine($"{word} & {pair}");
-        // Each pair of words should displayed on its own line.
+
+        HashSet<string> wordSet = new HashSet<string>(words);
+
+        foreach (string word in words)
+        {
+            if (word[0] != word[1])
+            {
+                string pair = string.Concat(word[1], word[0]);
+
+                if (wordSet.Contains(pair))
+                {
+                    Console.WriteLine($"{word} & {pair}");
+                    wordSet.Remove(word);
+                }
+            }
+
+        }
+        
     }
 
     /// <summary>
