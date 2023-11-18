@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Xml.XPath;
 
 public static class SetsAndMapsTester {
     public static void Run() {
@@ -181,8 +182,61 @@ public static class SetsAndMapsTester {
     /// # Problem 3 #
     /// #############
     private static bool IsAnagram(string word1, string word2) {
-        // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var letters_1 = new Dictionary<char, int>();
+        var letters_2 = new Dictionary<char, int>();
+        bool result = true;
+
+        foreach (char let in word1)
+        {
+            char letter = char.ToLower(let);
+            if (letter != ' ')
+            {
+                if (letters_1.ContainsKey(letter))
+                {
+                    letters_1[letter] += 1;
+                }
+
+                else
+                {
+                    letters_1[letter] = 1;
+                }
+            }
+        }
+
+        foreach (char let in word2)
+        {
+            char letter = char.ToLower(let);
+            if (letter != ' ')
+            {
+                if (letters_2.ContainsKey(letter))
+                {
+                    letters_2[letter] += 1;
+                }
+
+                else
+                {
+                    letters_2[letter] = 1;
+                }
+            }
+        }
+
+        foreach (char let in word1)
+        {
+            char letter = char.ToLower(let);
+            if (letter != ' ')
+            {
+                if (! letters_2.ContainsKey(letter))
+                {
+                    result = false;
+                }
+                else if (letters_1[letter] != letters_2[letter])
+                {
+                    result = false;
+                }
+            }
+        }
+
+        return result;
     }
 
     /// <summary>
