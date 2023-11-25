@@ -170,6 +170,18 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void Replace(int oldValue, int newValue) {
         // TODO Problem 4
+        if (_head is not null)
+        {
+            var curr = _head;
+            while (curr is not null)
+            {
+                if (curr.Data == oldValue)
+                {
+                    curr.Data = newValue;
+                }
+                curr = curr.Next;
+            }
+        }
     }
 
     /// <summary>
