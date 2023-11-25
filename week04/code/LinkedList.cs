@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 public class LinkedList : IEnumerable<int> {
     private Node? _head;
@@ -28,6 +29,20 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void InsertTail(int value) {
         // TODO Problem 1
+        Node newNode = new Node(value);
+
+        if (_head is null)
+        {
+            _head = newNode;
+            _tail = newNode;
+        }
+
+        else
+        {
+            newNode.Prev = _tail;
+            _tail.Next = newNode;
+            _tail = newNode;
+        }
     }
 
 
@@ -56,6 +71,17 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void RemoveTail() {
         // TODO Problem 2
+        if (_head == _tail)
+        {
+            _head = null;
+            _tail = null;
+        }
+
+        else if (_head is not null)
+        {
+            _tail!.Prev!.Next = null;
+            _tail = _tail.Prev;
+        }
     }
 
     /// <summary>
@@ -94,6 +120,49 @@ public class LinkedList : IEnumerable<int> {
     /// </summary>
     public void Remove(int value) {
         // TODO Problem 3
+        
+        if (_head is not null)
+        {
+            var currPoint = _head;
+            if (_head.Data == value)
+            {
+                RemoveHead();
+            }
+
+            else if (_tail == _head)
+            {
+                RemoveHead();
+            }
+
+            else if (_tail!.Data == value)
+            {
+                RemoveTail();
+            }
+
+            else
+            {
+                while (currPoint is not null)
+                {
+                    if (currPoint.Data == value)
+                    {
+                        currPoint.Prev!.Next = null;
+                        currPoint.Next!.Prev = null;
+                        currPoint.Prev!.Next = currPoint.Next;
+                        currPoint.Next!.Prev = currPoint.Prev;
+                        currPoint = null;
+
+                    }
+
+                    else
+                    {
+                        currPoint = currPoint.Next;
+                    }
+                }
+            }
+            
+            
+        }
+
     }
 
     /// <summary>

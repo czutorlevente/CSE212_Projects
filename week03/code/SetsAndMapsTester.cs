@@ -284,7 +284,7 @@ public static class SetsAndMapsTester {
         return map;
     }
 
-    
+
 
     /// <summary>
     /// This function will read JSON (Javascript Object Notation) data from the 
@@ -312,5 +312,7 @@ public static class SetsAndMapsTester {
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
         // 1. Add your code to map the json to the feature collection object
         // 2. Print out each place a earthquake has happened today
+        var f = featureCollection["features"];
+        Console.WriteLine(f);
     }
 }
