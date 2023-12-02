@@ -1,3 +1,5 @@
+using System.Text;
+
 public static class RecursionTester {
     /// <summary>
     /// Entry point for the Prove 8 tests
@@ -275,7 +277,29 @@ public static class RecursionTester {
     /// some of the string functions like IndexOf and [..X] / [X..] to be useful in solving this problem.
     /// </summary>
     public static void WildcardBinary(string pattern) {
-        // TODO Start Problem 4
+        if (!pattern.Contains('*'))
+        {
+            Console.WriteLine(pattern);
+        }
+
+        else
+        {
+            StringBuilder sb = new StringBuilder(pattern);
+            for (int i = 0; i < sb.Length; i++)
+            {
+                
+                if (sb[i] == '*')
+                {
+                    sb[i] = '1';
+                    string stringOne = sb.ToString();
+                    WildcardBinary(stringOne);
+                    sb[i] = '0';
+                    string stringTwo = sb.ToString();
+                    WildcardBinary(stringTwo);
+                    break;
+                }
+            }
+        }
     }
 
     /// <summary>
