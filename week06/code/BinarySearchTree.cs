@@ -13,7 +13,7 @@ public class BinarySearchTree : IEnumerable<int> {
         if (_root is null)
             _root = newNode;
         // If the list is not empty, then only head will be affected.
-        else
+        else if (!_root.Contains(value))
             _root.Insert(value);
     }
 

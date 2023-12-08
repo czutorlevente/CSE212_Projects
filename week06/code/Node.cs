@@ -1,3 +1,5 @@
+using System.Xml.XPath;
+
 public class Node {
     public int Data { get; set; }
     public Node? Right { get; private set; }
@@ -26,7 +28,37 @@ public class Node {
 
     public bool Contains(int value) {
         // TODO Start Problem 2
-        return false;
+        if (value == Data)
+        {
+            return true;
+        }
+        else
+            if (Left is not null)
+            {
+                if (Left.Contains(value) == true)
+                {
+                    return true;
+                }
+
+            }
+
+            if (Right is not null)
+            {
+                if (Right.Contains(value) == true)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+
+            else
+            {
+                return false;
+            }
     }
 
     public int GetHeight() {
