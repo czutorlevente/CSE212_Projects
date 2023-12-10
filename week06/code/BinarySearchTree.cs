@@ -83,6 +83,7 @@ public class BinarySearchTree : IEnumerable<int> {
         return _root.GetHeight();
     }
 
+
     public override string ToString() {
         return "<Bst>{" + string.Join(", ", this) + "}";
     }
