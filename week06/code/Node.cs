@@ -17,7 +17,7 @@ public class Node {
             else
                 Left.Insert(value);
         }
-        else {
+        else if (value > Data){
             // Insert to the right
             if (Right is null)
                 Right = new Node(value);
